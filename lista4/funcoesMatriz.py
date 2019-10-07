@@ -248,3 +248,10 @@ def construcaoMatrizVetor(n):
             H[i, j] = 1 / (i + j + 1)
         b[i] = 1 / (i + n + 1)  
     return H, b
+
+def calcularResiduo(H, b, x):
+    return max(abs(H@x - b))
+
+"""Para o problema 3"""
+def condMatriz(A, Ai):
+    return abs(np.linalg.norm(A, 2) * np.linalg.norm(Ai, 2))

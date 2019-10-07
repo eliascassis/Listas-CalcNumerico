@@ -5,3 +5,4 @@ print("Matriz")
 print(resultado[0])
 print("Vetor")
 print(resultado[1])
+
