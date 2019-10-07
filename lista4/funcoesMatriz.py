@@ -182,7 +182,7 @@ def cholesky(A):
             soma += A[j,k]*A[j,k]
 
         try: 
-            A[j,j] = sqrt( A[j,j] - soma )
+            A[j,j] = math.sqrt( A[j,j] - soma )
         except ValueError:
             print("A matriz nao eh positiva definida.")
                 
@@ -209,7 +209,7 @@ def solveCholesky(G,b):
     
     G deve ser triangular inferior.
     """
-    n = len(b)    
+    # n = len(b)    
     # substituicao - resolve Gy = b
     y = substituicao(G,b)    
     # retrosubstituicao - resolve G^T x = y
@@ -258,16 +258,26 @@ def inversa(A):
             auxA = A # Matriz auxiliar para não alterar a matriz original
             decompLU(auxA)
 
-            I = np.identity # Matriz identidade
+            I = np.identity(n) # Matriz identidade
 
             for k in range(0, n): # Para cada coluna da identidade, vai retornar uma linha da inversa
 
                 Ai[k] = solveLU(auxA, I[k])
 
-            return Ai.transpose()
+            if((Ai.transpose()@A).any() == I.any()): # Verificando se é de fato a inversa
+                return Ai.transpose() # É retornada a transposta porque é alocada em linhas
 
         else:
             print("Determinante igual a 0!")
     else:
         print("Matriz não é quadrada!")
 
+"""Para o problema 4"""
+def construcaoMatrizVetor(n):
+    H = np.zeros((n, n), dtype=float)
+    b = np.zeros(n, dtype=float)
+    for i in range(n):
+        for j in range(n):
+            H[i, j] = 1 / (i + j + 1)
+        b[i] = 1 / (i + n + 1)  
+    return H, b
