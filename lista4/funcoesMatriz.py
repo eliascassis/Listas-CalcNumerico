@@ -238,3 +238,36 @@ def gaussSeidel(A, b, x0, epsilon, kmax):
     # kmax: numero maximo de iteracoes
 
     pass
+
+def inversa(A):
+    """
+    Função que retorna uma matriz inversa
+    A: matriz que deseja calcular a inversa
+    A deve ser nxn e determinante != 0 
+    """
+
+    n = len(A) # Quantidade de linhas de A
+    m = len(A[0]) # Quantidade de colunas de A
+
+    if(n == m):
+        
+        if(np.linalg.det(A) != 0):
+            
+            Ai = np.empty((n, n), dtype = float) # Matriz inversa
+
+            auxA = A # Matriz auxiliar para não alterar a matriz original
+            decompLU(auxA)
+
+            I = np.identity # Matriz identidade
+
+            for k in range(0, n): # Para cada coluna da identidade, vai retornar uma linha da inversa
+
+                Ai[k] = solveLU(auxA, I[k])
+
+            return Ai.transpose()
+
+        else:
+            print("Determinante igual a 0!")
+    else:
+        print("Matriz não é quadrada!")
+
