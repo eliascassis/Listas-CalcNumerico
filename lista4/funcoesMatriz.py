@@ -1,4 +1,5 @@
 import numpy as np
+import math
 
 def trocarLinhas(A, k, r):
     linhaAux = A[k]
@@ -26,7 +27,7 @@ def eliminacao_gauss_pivoteamento(A, b):
             for j in range(k+1, size):
                 A[i][j] -= m * A[k][j]
             b[i]-= m * b[k] 
-    x = retro_substituicao(A, b)
+    x = retrosubstituicao(A, b)
     return x
 
 # -----------------------------------------------------------------------------
@@ -34,9 +35,6 @@ def eliminacao_gauss_pivoteamento(A, b):
 # Capitulo 4 - Solucao de Sistemas Lineares
 # Bernardo M. Rocha
 # -----------------------------------------------------------------------------
-
-import numpy as np
-
 # -----------------------------------------------------------------------------
 
 def substituicao(A, b):
