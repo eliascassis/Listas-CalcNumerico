@@ -1,8 +1,8 @@
 import funcoesMatriz as fM 
+import numpy as np
 
-resultado = fM.construcaoMatrizVetor(5)
-print("Matriz")
-print(resultado[0])
-print("Vetor")
-print(resultado[1])
-
+m = np.zeros((2,2), dtype=float)
+for i in range(2):
+    for j in range(2):
+        m[i,j] = float(input())
+mi = fM.inversa()
