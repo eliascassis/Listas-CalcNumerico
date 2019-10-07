@@ -182,7 +182,7 @@ def cholesky(A):
             soma += A[j,k]*A[j,k]
 
         try: 
-            A[j,j] = sqrt( A[j,j] - soma )
+            A[j,j] = math.sqrt( A[j,j] - soma )
         except ValueError:
             print("A matriz nao eh positiva definida.")
                 
@@ -209,7 +209,7 @@ def solveCholesky(G,b):
     
     G deve ser triangular inferior.
     """
-    n = len(b)    
+    # n = len(b)    
     # substituicao - resolve Gy = b
     y = substituicao(G,b)    
     # retrosubstituicao - resolve G^T x = y
@@ -238,3 +238,13 @@ def gaussSeidel(A, b, x0, epsilon, kmax):
     # kmax: numero maximo de iteracoes
 
     pass
+
+"""Para o problema 4"""
+def construcaoMatrizVetor(n):
+    H = np.zeros((n, n), dtype=float)
+    b = np.zeros(n, dtype=float)
+    for i in range(n):
+        for j in range(n):
+            H[i, j] = 1 / (i + j + 1)
+        b[i] = 1 / (i + n + 1)  
+    return H, b
