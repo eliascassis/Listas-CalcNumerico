@@ -219,25 +219,61 @@ def solveCholesky(G,b):
                     
 # -----------------------------------------------------------------------------
 
-def jacobi(A, b, x0, epsilon, kmax):
+def jacobi(A, b, x0, epsilon=1e-4, kmax=100):
     
-    # implemente aqui a sua solucao
-    # x0: chute inicial
-    # epsilon: tolerancia
-    # kmax: numero maximo de iteracoes
-
-    pass
-
+    n = len(b)
+    for k in range(kmax):
+        for i in range(n):
+            x0[i] = (b[i] - np.delete(A[i], i)) / A[i,i] 
+        if np.linalg.norm(b - x0, 2) < epsilon:
+            return x0
+        k+=1
+    print("Número máximo de iterações atingido!")
 # -----------------------------------------------------------------------------
 
 def gaussSeidel(A, b, x0, epsilon, kmax):
     
-    # implemente aqui a sua solucao
-    # x0: chute inicial
-    # epsilon: tolerancia
-    # kmax: numero maximo de iteracoes
+    n = len(b)
+    for k in range(kmax):
+        for i in range(n):
+            x0[i] = (b[i] - np.delete(A[i], i)) / A[i,i] 
+        if np.linalg.norm(b - x0, 2) < epsilon:
+            return x0
+        k+=1
+    print("Número máximo de iterações atingido!")
 
-    pass
+def inversa(A):
+    """
+    Função que retorna uma matriz inversa
+    A: matriz que deseja calcular a inversa
+    A deve ser nxn e determinante != 0 
+    """
+
+    n = len(A) # Quantidade de linhas de A
+    m = len(A[0]) # Quantidade de colunas de A
+
+    if(n == m):
+        
+        if(np.linalg.det(A) != 0):
+            
+            Ai = np.empty((n, n), dtype = float) # Matriz inversa
+
+            auxA = A # Matriz auxiliar para não alterar a matriz original
+            decompLU(auxA)
+
+            I = np.identity(n) # Matriz identidade
+
+            for k in range(0, n): # Para cada coluna da identidade, vai retornar uma linha da inversa
+
+                Ai[k] = solveLU(auxA, I[k])
+
+            if((Ai.transpose()@A).any() == I.any()): # Verificando se é de fato a inversa
+                return Ai.transpose() # É retornada a transposta porque é alocada em linhas
+
+        else:
+            print("Determinante igual a 0!")
+    else:
+        print("Matriz não é quadrada!")
 
 """Para o problema 4"""
 def construcaoMatrizVetor(n):
