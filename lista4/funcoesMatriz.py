@@ -224,10 +224,9 @@ def jacobi(A, b, x0, epsilon=1e-4, kmax=100):
     n = len(b)
     for k in range(kmax):
         for i in range(n):
-            x0[i] = (b[i] - np.delete(A[i], i)) / A[i,i] 
+            x0[i] = (b[i] - np.delete(A[i], i) @ np.delete(x0, i)) / A[i,i] 
         if np.linalg.norm(b - x0, 2) < epsilon:
             return x0
-        k+=1
     print("Número máximo de iterações atingido!")
 # -----------------------------------------------------------------------------
 
@@ -236,10 +235,6 @@ def gaussSeidel(A, b, x0, epsilon, kmax):
     n = len(b)
     for k in range(kmax):
         for i in range(n):
-            x0[i] = (b[i] - np.delete(A[i], i)) / A[i,i] 
-        if np.linalg.norm(b - x0, 2) < epsilon:
-            return x0
-        k+=1
     print("Número máximo de iterações atingido!")
 
 def inversa(A):
