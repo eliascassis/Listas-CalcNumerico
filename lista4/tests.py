@@ -1,13 +1,10 @@
 import funcoesMatriz as fM 
 import funcoesLeitura as fL
+import numpy as np
 
-resultado = fM.construcaoMatrizVetor(5)
-print("Matriz")
-print(resultado[0])
-print("Vetor")
-print(resultado[1])
+A = np.array(([1,3,3],[1,4,3],[1,3,4]))
 
-Ai = fM.inversa(resultado[0])
+Ai = fM.inversa(A)
 
 print("Inversa")
 print(Ai)

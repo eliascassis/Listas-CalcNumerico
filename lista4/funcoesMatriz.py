@@ -239,6 +239,9 @@ def gaussSeidel(A, b, x0, epsilon, kmax):
 
     pass
 
+def column(matrix, i):
+    return [row[i] for row in matrix]
+
 def inversa(A):
     """
     Função que retorna uma matriz inversa
@@ -253,19 +256,19 @@ def inversa(A):
         
         if(np.linalg.det(A) != 0):
             
-            Ai = np.empty((n, n), dtype = float) # Matriz inversa
+            Ai = np.zeros((n, n), dtype = float) # Matriz inversa
 
-            auxA = A # Matriz auxiliar para não alterar a matriz original
+            auxA = A.copy() # Matriz auxiliar para não alterar a matriz original
             decompLU(auxA)
 
             I = np.identity(n) # Matriz identidade
 
             for k in range(0, n): # Para cada coluna da identidade, vai retornar uma linha da inversa
 
-                Ai[k] = solveLU(auxA, I[k])
+                Ai[:,k] = solveLU(auxA, I[k])
 
-            if((Ai.transpose()@A).any() == I.any()): # Verificando se é de fato a inversa
-                return Ai.transpose() # É retornada a transposta porque é alocada em linhas
+            if((Ai@A).all() == I.all()): # Verificando se é de fato a inversa
+                return Ai # É retornada a transposta porque é alocada em linhas
 
         else:
             print("Determinante igual a 0!")
