@@ -129,7 +129,9 @@ def decompLU(A):
         for i in range(k+1,n):
             if A[i,k] != 0.0:
                 m = A[i,k]/A[k,k]
+                print(m)
                 A[i,k] = m
+                print(A)
                 for j in range(k+1,n):
                     A[i,j] = A[i, j] - m * A[k,j]
 
@@ -230,12 +232,12 @@ def jacobi(A, b, x0, epsilon=1e-4, kmax=100):
     print("Número máximo de iterações atingido!")
 # -----------------------------------------------------------------------------
 
-def gaussSeidel(A, b, x0, epsilon, kmax):
+"""def gaussSeidel(A, b, x0, epsilon, kmax):
     
     n = len(b)
     for k in range(kmax):
         for i in range(n):
-    print("Número máximo de iterações atingido!")
+    print("Número máximo de iterações atingido!")"""
 
 def column(matrix, i):
     return [row[i] for row in matrix]

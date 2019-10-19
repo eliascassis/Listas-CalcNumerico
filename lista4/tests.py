@@ -3,7 +3,7 @@ import numpy as np
 import funcoesLeitura as fL
 import numpy as np
 
-A = np.array(([5,-2],[-2,4]))
+A = np.array(([5,-2],[-2,4]), dtype=float)
 
 Ai = fM.inversa(A)
 
