@@ -219,25 +219,23 @@ def solveCholesky(G,b):
                     
 # -----------------------------------------------------------------------------
 
-def jacobi(A, b, x0, epsilon, kmax):
+def jacobi(A, b, x0, epsilon=1e-4, kmax=100):
     
-    # implemente aqui a sua solucao
-    # x0: chute inicial
-    # epsilon: tolerancia
-    # kmax: numero maximo de iteracoes
-
-    pass
-
+    n = len(b)
+    for k in range(kmax):
+        for i in range(n):
+            x0[i] = (b[i] - np.delete(A[i], i) @ np.delete(x0, i)) / A[i,i] 
+        if np.linalg.norm(b - x0, 2) < epsilon:
+            return x0
+    print("Número máximo de iterações atingido!")
 # -----------------------------------------------------------------------------
 
 def gaussSeidel(A, b, x0, epsilon, kmax):
     
-    # implemente aqui a sua solucao
-    # x0: chute inicial
-    # epsilon: tolerancia
-    # kmax: numero maximo de iteracoes
-
-    pass
+    n = len(b)
+    for k in range(kmax):
+        for i in range(n):
+    print("Número máximo de iterações atingido!")
 
 def column(matrix, i):
     return [row[i] for row in matrix]
