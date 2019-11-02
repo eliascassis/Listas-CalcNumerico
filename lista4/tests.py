@@ -3,12 +3,12 @@ import numpy as np
 import funcoesLeitura as fL
 import numpy as np
 
-n_list = [5, 10, 100, 1000]
+n_list = [1000]
 for n in n_list:
     print("------------------------------------------------------------------------------------")
     print("Para N = ", n)
+    print()
     h = fM.construcaoMatrizVetor(n)
-    print(h[0])
     print("Cond(H): ", fM.condMatriz(h[0]))
     # Resolvendo o sistema pela Eliminação de Gauss
     x = fM.gauss(h[0], h[1])
