@@ -10,12 +10,12 @@ def trocarLinhas(A, k, r):
 def eliminacao_gauss_pivoteamento(A, b):
     """
     Aplica o método de gauss com pivoteamento\n
-    @param L Matriz triangular inferior \n
+    @param A Matriz \n
     @param b vetor com valores desejados \n
     @return x vetor com os valores da solução
     """
     size = len(b)
-    for k in range(0, size):
+    for k in range(0, size-1):
         w = abs(A[k][k])
         for j in range(k, size):
             if abs(A[j][k]) > w:
