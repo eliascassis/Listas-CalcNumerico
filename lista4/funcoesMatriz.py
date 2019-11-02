@@ -261,14 +261,23 @@ def criterioSassenfeld(A):
 # -----------------------------------------------------------------------------
 
 def jacobi(A, b, x0, epsilon=1e-8, kmax=100):
+
+    """
+    Função que retorna a solução de um sistema linear calculada pelo método iterativo de Jacobi
+    A: matriz de coeficientes do sistema linear
+    b: vetor de resultados desejados
+    x0: aproximação inicial para o vetor de soluções
+    epsilon: critério de parada - erro máximo permitido
+    kmax: número máximo de iterações para o algoritmo
+    """
     
-    if(criterioLinhas(A)): 
+    if(criterioLinhas(A)): # verifica o critério das linhas
         n = len(b)
         x = np.copy(x0)
-        for k in range(kmax):
+        for k in range(kmax): # numero máximo de iterações
             for i in range(n):
-                x[i] = (b[i] - np.delete(A[i], i) @ np.delete(x0, i)) / A[i,i] 
-            if max(abs(x - x0)) < epsilon:
+                x[i] = (b[i] - np.delete(A[i], i) @ np.delete(x0, i)) / A[i,i] #Cálculo dos Xi's.
+            if max(abs(x - x0)) < epsilon: # critério de parada
                 print("Numero de iteracoes: ", k)
                 return x
             x0 = x
@@ -279,14 +288,23 @@ def jacobi(A, b, x0, epsilon=1e-8, kmax=100):
 # -----------------------------------------------------------------------------
 
 def gaussSeidel(A, b, x0, epsilon=1e-8, kmax=100):
+
+    """
+    Função que retorna a solução de um sistema linear calculada pelo método iterativo de Gauss-Seidel
+    A: matriz de coeficientes do sistema linear
+    b: vetor de resultados desejados
+    x0: aproximação inicial para o vetor de soluções
+    epsilon: critério de parada - erro máximo permitido
+    kmax: número máximo de iterações para o algoritmo
+    """
     
-    if(criterioSassenfeld(A)):
+    if(criterioSassenfeld(A)): # verifica o critério de Sassenfeld
         n = len(b)
         x = np.copy(x0)
-        for k in range(kmax):
+        for k in range(kmax): # número máximo de iterações
             for i in range(n):
-                x[i] = (b[i] - np.delete(A[i], i) @ np.delete(x, i)) / A[i,i] 
-            if max(abs(x - x0)) < epsilon:
+                x[i] = (b[i] - np.delete(A[i], i) @ np.delete(x, i)) / A[i,i] # Cálculo dos Xi's
+            if max(abs(x - x0)) < epsilon: # Critério de parada
                 print("Numero de iteracoes: ", k)
                 return x
             x0 = x
