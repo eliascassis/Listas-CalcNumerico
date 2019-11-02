@@ -129,9 +129,7 @@ def decompLU(A):
         for i in range(k+1,n):
             if A[i,k] != 0.0:
                 m = A[i,k]/A[k,k]
-                print(m)
                 A[i,k] = m
-                print(A)
                 for j in range(k+1,n):
                     A[i,j] = A[i, j] - m * A[k,j]
 
@@ -375,7 +373,9 @@ def construcaoMatrizVetor(n):
     return H, b
 
 def calcularResiduo(H, b, x):
-    return max(abs(H@x - b))
+    p = H@x 
+    print(p)
+    #return max(abs(H@x - b))
 
 """Para o problema 3"""
 def condMatriz(A):
@@ -384,4 +384,5 @@ def condMatriz(A):
     A: matriz desejada para calcular o condicionamento 
     """
     Ai = inversa(A)
-    return abs(np.linalg.norm(A, 2) * np.linalg.norm(Ai, 2))
+    if(Ai):
+        return abs(np.linalg.norm(A, 2) * np.linalg.norm(Ai, 2))
