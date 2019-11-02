@@ -18,20 +18,22 @@ def eliminacao_gauss_pivoteamento(A, b):
     for k in range(0, size-1):
         w = abs(A[k][k])
         tag = False
-        for j in range(k, size):
+        for j in range(k+1, size):
             if abs(A[j][k]) > w:
                 tag = True
                 w = abs(A[j][k])
                 r = j
         if(tag):
             trocarLinhas(A, k, r) 
+            trocarLinhas(b, k, r)
 
         # Etapa de eliminacao
         for i in range(k+1,size):
                 m = A[i,k]/A[k,k]
                 for j in range(k,size-1):
-                    A[i,j] = A[i, j] - m * A[k,j]
-                b[i] = b[i] - m * b[k]
+                    A[i,j] -= m * A[k,j]
+                b[i] -= m * b[k]
+    print(A)
     x = retrosubstituicao(A, b)
     return x
 

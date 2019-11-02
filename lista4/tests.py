@@ -16,7 +16,7 @@ for n in n_list:
     print("Eliminação de Gauss: ", str.format('{0:.4e}' ,fM.calcularResiduo(h[0], h[1], x)))
     # Resolvendo o sistema pela Eliminação de Gauss com Pivotamento
     h2 = (h[0].copy(), h[1].copy()) 
-    y = fM.eliminacao_gauss_pivoteamento( h2[0], h2[1])
+    y = fM.eliminacao_gauss_pivoteamento(h2[0], h2[1])
     print("Eliminação de Gauss c/ pivotamento: ", str.format('{0:.4e}' ,fM.calcularResiduo(h[0], h[1], y)))
     # Resolvendo o sistema pela Decomposição Lu
     h3 = (h[0].copy(), h[1].copy())
