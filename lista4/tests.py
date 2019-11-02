@@ -6,6 +6,8 @@ import numpy as np
 A = np.array(([4,0.24,-0.08],[0.09,3,-0.15],[0.04,-0.08,4]), dtype=float)
 b = np.array(([8,9,20]), dtype=float)
 x0 = np.zeros(3, dtype=float)
+print(fM.jacobi(A, b, x0))
+print()
 print(fM.gaussSeidel(A, b, x0))
 
 
