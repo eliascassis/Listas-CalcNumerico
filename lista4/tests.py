@@ -3,7 +3,7 @@ import numpy as np
 import funcoesLeitura as fL
 import numpy as np
 
-n_list = [1000]
+n_list = [5, 10, 100, 1000]
 for n in n_list:
     print("------------------------------------------------------------------------------------")
     print("Para N = ", n)
