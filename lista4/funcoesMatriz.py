@@ -269,7 +269,8 @@ def jacobi(A, b, x0, epsilon=1e-8, kmax=100):
             for i in range(n):
                 x[i] = (b[i] - np.delete(A[i], i) @ np.delete(x0, i)) / A[i,i] 
             if max(abs(x - x0)) < epsilon:
-                return x, k
+                print("Numero de iteracoes: ", k)
+                return x
             x0 = x
         print("Numero maximo de iteracoes atingido!")
 
@@ -286,7 +287,8 @@ def gaussSeidel(A, b, x0, epsilon=1e-8, kmax=100):
             for i in range(n):
                 x[i] = (b[i] - np.delete(A[i], i) @ np.delete(x, i)) / A[i,i] 
             if max(abs(x - x0)) < epsilon:
-                return x, k
+                print("Numero de iteracoes: ", k)
+                return x
             x0 = x
         print("Número máximo de iterações atingido!")
 
