@@ -341,23 +341,23 @@ def inversa(A):
     n = len(A) # Quantidade de linhas de A
     m = len(A[0]) # Quantidade de colunas de A
 
-    if(n == m):
+    if(n == m): # Verificando matriz quadrada
         
-        if(np.linalg.det(A) != 0):
+        if(np.linalg.det(A) != 0): # Verificando determinante
             
             Ai = np.zeros((n, n), dtype = float) # Matriz inversa
 
             auxA = A.copy() # Matriz auxiliar para não alterar a matriz original
-            decompLU(auxA)
+            decompLU(auxA) # Decompondo em LU para cálculo da inversa
 
             I = np.identity(n) # Matriz identidade
 
-            for k in range(0, n): # Para cada coluna da identidade, vai retornar uma linha da inversa
+            for k in range(0, n): # Para cada coluna da identidade, retorna uma coluna da inversa
 
                 Ai[:,k] = solveLU(auxA, I[k])
 
             if((Ai@A).all() == I.all()): # Verificando se é de fato a inversa
-                return Ai # É retornada a transposta porque é alocada em linhas
+                return Ai
 
         else:
             print("Determinante igual a 0!")
