@@ -25,12 +25,13 @@ def eliminacao_gauss_pivoteamento(A, b):
                 r = j
         if(tag):
             trocarLinhas(A, k, r) 
-        for i in range(k+1, size):
+        for i in range(0, size-1):
             m = A[i][k] / A[k][k]
             for j in range(k+1, size):
                 A[i][j] -= m * A[k][j]
             b[i]-= m * b[k] 
-    x = retrosubstituicao(A, b)
+    print(A)
+    x = substituicao(A, b)
     return x
 
 # -----------------------------------------------------------------------------
