@@ -221,41 +221,59 @@ def solveCholesky(G,b):
 
 # -----------------------------------------------------------------------------
 def criterioLinhas(A):
+    """
+    Verifica se a matriz A atende o critério das Linhas.
+    Onde o maior elemento do vetor, composto pelo somatório dos 
+    elementos, exceto o da diagonal principal, de uma linha dividido
+    pelo elemento da diagonal, deve ser menor do que 1.
+    
+    """
 
+    # Dimensão de A
     n = len(A)
 
+    # Vetor auxiliar
     alpha = np.zeros(n, dtype=float)
 
-    for i in range(n):
-        for j in range(1,n):
+    for i in range(n): # Para cada linha de A
+        for j in range(1,n): # Percorre as colunas
 
-            if(i != j):
-                alpha[i] += abs(A[i,j]/A[i,i]) 
+            if(i != j): # Caso não seja elemento da diagonal principal
+                alpha[i] += abs(A[i,j]/A[i,i]) # É somado o elemento dividido pelo da diagonal
 
-    if(max(alpha) < 1):
+    if(max(alpha) < 1): # Sendo o maior valor do vetor menor do que 1, critério atendido
         return True
-    else:
+    else: # Caso contrário não é satisfeito
         return False
 
 # -----------------------------------------------------------------------------
 def criterioSassenfeld(A):
-
+    """
+    Verifica se a matriz A atende o critério de Sassenfeld.
+    Onde o maior elemento do vetor beta, composto pelo somatório dos 
+    elementos, exceto o da diagonal principal, vezes o beta correspondente
+    dividido pelo elemento da diagonal, deve ser menor do que 1.
+    
+    """
+    
+    # Dimensão de A
     n = len(A)
 
+    # Vetor beta
     beta = np.zeros(n, dtype=float)
 
-    for i in range(n):
-        for j in range(1,i-1):
-            beta[i] += abs(A[i,j]) * beta[j]
+    for i in range(n): # Para cada linha de A
+        for j in range(1,i-1): # Para cada elemento até o da diagonal principal
+            beta[i] += abs(A[i,j]) * beta[j] # Soma o elemento com o beta correspondente
 
-        for j in range(i+1,n):
-            beta[i] += abs(A[i,j]) 
+        for j in range(i+1,n): # Para cada elemento depois da diagonal principal
+            beta[i] += abs(A[i,j]) # Soma o elemento
 
-        beta[i] = beta[i]/abs(A[i,i])
+        beta[i] = beta[i]/abs(A[i,i]) # Ao percorrer todas colunas, a soma é dividida pelo elemento da diagonal
 
-    if(max(beta) < 1):
+    if(max(beta) < 1):# Sendo o maior valor do vetor menor do que 1, critério atendido
         return True
-    else:
+    else: # Caso contrário não é satisfeito
         return False
 
 # -----------------------------------------------------------------------------
