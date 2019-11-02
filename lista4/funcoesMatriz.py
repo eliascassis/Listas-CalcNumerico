@@ -378,5 +378,10 @@ def calcularResiduo(H, b, x):
     return max(abs(H@x - b))
 
 """Para o problema 3"""
-def condMatriz(A, Ai):
+def condMatriz(A):
+    """
+    Função que retorna o condicionamento da matriz A
+    A: matriz desejada para calcular o condicionamento 
+    """
+    Ai = inversa(A)
     return abs(np.linalg.norm(A, 2) * np.linalg.norm(Ai, 2))
