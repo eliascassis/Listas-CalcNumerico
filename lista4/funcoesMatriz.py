@@ -17,13 +17,14 @@ def eliminacao_gauss_pivoteamento(A, b):
     size = len(b)
     for k in range(0, size-1):
         w = abs(A[k][k])
+        tag = False
         for j in range(k, size):
             if abs(A[j][k]) > w:
+                tag = True
                 w = abs(A[j][k])
                 r = j
-            else:
-                r = k
-        trocarLinhas(A, k, r) 
+        if(tag):
+            trocarLinhas(A, k, r) 
         for i in range(k+1, size):
             m = A[i][k] / A[k][k]
             for j in range(k+1, size):
