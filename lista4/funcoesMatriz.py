@@ -260,32 +260,34 @@ def criterioSassenfeld(A):
 
 # -----------------------------------------------------------------------------
 
-def jacobi(A, b, x0, epsilon=1e-4, kmax=100):
+def jacobi(A, b, x0, epsilon=1e-8, kmax=100):
     
-    if(criterioLinhas(A)):
+    if(criterioLinhas(A)): 
         n = len(b)
         x = np.copy(x0)
         for k in range(kmax):
             for i in range(n):
                 x[i] = (b[i] - np.delete(A[i], i) @ np.delete(x0, i)) / A[i,i] 
+            if max(abs(x - x0)) < epsilon:
+                return x, k
             x0 = x
-            if np.linalg.norm(b - x0, 2) < epsilon:
-                return x0
-        print("Número máximo de iterações atingido!")
+        print("Numero maximo de iteracoes atingido!")
 
     else:
-        print("Não passa do critério de linhas!")
+        print("Nao passa do criterio das linhas!")
 # -----------------------------------------------------------------------------
 
-def gaussSeidel(A, b, x0, epsilon, kmax):
+def gaussSeidel(A, b, x0, epsilon=1e-8, kmax=100):
     
     if(criterioSassenfeld(A)):
         n = len(b)
+        x = np.copy(x0)
         for k in range(kmax):
             for i in range(n):
-                x0[i] = (b[i] - np.delete(A[i], i) @ np.delete(x0, i)) / A[i,i] 
-            if np.linalg.norm(b - x0, 2) < epsilon:
-                return x0
+                x[i] = (b[i] - np.delete(A[i], i) @ np.delete(x, i)) / A[i,i] 
+            if max(abs(x - x0)) < epsilon:
+                return x, k
+            x0 = x
         print("Número máximo de iterações atingido!")
 
     else:

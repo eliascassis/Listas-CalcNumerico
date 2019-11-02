@@ -5,9 +5,7 @@ import numpy as np
 
 A = np.array(([5,-2],[-2,4]), dtype=float)
 
-Ai = fM.inversa(A)
-
-print(fM.condMatriz(A, Ai))
+# print(fM.condMatriz(A, Ai))
 
 """ #* TESTES ANTERIORES
 
