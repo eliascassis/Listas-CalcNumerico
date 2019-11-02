@@ -38,7 +38,7 @@ def eliminacao_gauss_pivoteamento(A, b):
                     for j in range(k,size):
                         A[i,j] = A[i, j] - m * A[k,j]
                     b[i] = b[i] - m * b[k]
-    x = substituicao(A, b)
+    x = retrosubstituicao(A, b)
     return x
 
 # -----------------------------------------------------------------------------
@@ -362,7 +362,6 @@ def inversa(A):
             I = np.identity(n) # Matriz identidade
 
             for k in range(0, n): # Para cada coluna da identidade, retorna uma coluna da inversa
-
                 Ai[:,k] = solveLU(auxA, I[k])
 
             #if((Ai@A).all() == I.all()): # Verificando se é de fato a inversa
