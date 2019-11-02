@@ -385,5 +385,5 @@ def condMatriz(A):
     Função que retorna o condicionamento da matriz A
     A: matriz desejada para calcular o condicionamento 
     """
-    Ai = inversa(A)
+    Ai = np.linalg.inv(A)
     return abs(np.linalg.norm(A, 2) * np.linalg.norm(Ai, 2))
