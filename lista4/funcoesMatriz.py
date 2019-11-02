@@ -373,9 +373,7 @@ def construcaoMatrizVetor(n):
     return H, b
 
 def calcularResiduo(H, b, x):
-    p = H@x 
-    print(p)
-    #return max(abs(H@x - b))
+    return (abs((H@x).transpose() - b)).max()
 
 """Para o problema 3"""
 def condMatriz(A):
