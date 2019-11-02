@@ -356,8 +356,8 @@ def inversa(A):
 
                 Ai[:,k] = solveLU(auxA, I[k])
 
-            if((Ai@A).all() == I.all()): # Verificando se é de fato a inversa
-                return Ai
+            #if((Ai@A).all() == I.all()): # Verificando se é de fato a inversa
+            return Ai
 
         else:
             print("Determinante igual a 0!")
@@ -384,5 +384,4 @@ def condMatriz(A):
     A: matriz desejada para calcular o condicionamento 
     """
     Ai = inversa(A)
-    if(Ai):
-        return abs(np.linalg.norm(A, 2) * np.linalg.norm(Ai, 2))
+    return abs(np.linalg.norm(A, 2) * np.linalg.norm(Ai, 2))

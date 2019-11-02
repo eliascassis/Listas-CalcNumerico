@@ -9,19 +9,22 @@ for n in n_list:
     print("Para N = ", n)
     print()
     h = fM.construcaoMatrizVetor(n)
-    print("Cond(H): ", fM.condMatriz(h[0]))
+    print("Cond(H): ", str.format('{0:.4e}' ,fM.condMatriz(h[0])))
     # Resolvendo o sistema pela Eliminação de Gauss
-    x = fM.gauss(h[0], h[1])
-    print("Eliminação de Gauss: ", str.format('{0:.4e}' ,fM.calcularResiduo(h[0], h[1], x)))
-    # Resolvendo o sistema pela Eliminação de Gauss com Pivotamento 
-    x = fM.eliminacao_gauss_pivoteamento( h[0], h[1])
-    print("Eliminação de Gauss c/ pivotamento: ", str.format('{0:.4e}' ,fM.calcularResiduo(h[0], h[1], x)))
-    # Resolbendo o sistema pela Decomposição Lu
-    x = fM.solveLU(h[0], h[1])
-    print("Decomposição LU: ", str.format('{0:.4e}' ,fM.calcularResiduo(h[0], h[1], x)))
+    h1 = (h[0].copy(), h[1].copy())
+    x = fM.gauss(h1[0], h1[1])
+    print("Eliminação de Gauss: ", str.format('{0:.4e}' ,fM.calcularResiduo(h1[0], h1[1], x)))
+    # Resolvendo o sistema pela Eliminação de Gauss com Pivotamento
+    h2 = (h[0].copy(), h[1].copy()) 
+    y = fM.eliminacao_gauss_pivoteamento( h2[0], h2[1])
+    print("Eliminação de Gauss c/ pivotamento: ", str.format('{0:.4e}' ,fM.calcularResiduo(h2[0], h2[1], y)))
+    # Resolvendo o sistema pela Decomposição Lu
+    h3 = (h[0].copy(), h[1].copy())
+    fM.decompLU(h3[0])
+    z = fM.solveLU(h3[0], h3[1])
+    print("Decomposição LU: ", str.format('{0:.4e}' ,fM.calcularResiduo(h3[0], h3[1], z)))
     print("------------------------------------------------------------------------------------")
     print()
-    quit()
 
 """ #* TESTES ANTERIORES
 
