@@ -14,13 +14,15 @@ def eliminacao_gauss_pivoteamento(A, b):
     @param b vetor com valores desejados \n
     @return x vetor com os valores da solução
     """
-    size = b.size()
+    size = len(b)
     for k in range(0, size):
         w = abs(A[k][k])
         for j in range(k, size):
             if abs(A[j][k]) > w:
                 w = abs(A[j][k])
                 r = j
+            else:
+                r = k
         trocarLinhas(A, k, r) 
         for i in range(k+1, size):
             m = A[i][k] / A[k][k]
