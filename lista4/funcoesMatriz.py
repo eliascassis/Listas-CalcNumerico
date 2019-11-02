@@ -278,13 +278,13 @@ def jacobi(A, b, x0, epsilon=1e-8, kmax=100):
             for i in range(n):
                 x[i] = (b[i] - np.delete(A[i], i) @ np.delete(x0, i)) / A[i,i] #Cálculo dos Xi's.
             if max(abs(x - x0)) < epsilon: # critério de parada
-                print("Numero de iteracoes: ", k)
+                print("Número de iterações: ", k)
                 return x
             x0 = x
-        print("Numero maximo de iteracoes atingido!")
+        print("Número máximo de iterações atingido!")
 
     else:
-        print("Nao passa do criterio das linhas!")
+        print("Não passa do critério das linhas!")
 # -----------------------------------------------------------------------------
 
 def gaussSeidel(A, b, x0, epsilon=1e-8, kmax=100):
@@ -305,7 +305,7 @@ def gaussSeidel(A, b, x0, epsilon=1e-8, kmax=100):
             for i in range(n):
                 x[i] = (b[i] - np.delete(A[i], i) @ np.delete(x, i)) / A[i,i] # Cálculo dos Xi's
             if max(abs(x - x0)) < epsilon: # Critério de parada
-                print("Numero de iteracoes: ", k)
+                print("Número de iterações: ", k)
                 return x
             x0 = x
         print("Número máximo de iterações atingido!")
