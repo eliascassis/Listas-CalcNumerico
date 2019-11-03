@@ -25,7 +25,6 @@ for n in n_list:
     print("Decomposição LU: ", str.format('{0:.4e}' ,fM.calcularResiduo(h[0], h[1], z)))
     print("------------------------------------------------------------------------------------")
     print()
-    quit()
 
 """ #* TESTES ANTERIORES
 

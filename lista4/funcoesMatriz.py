@@ -2,7 +2,7 @@ import numpy as np
 import math
 
 def trocarLinhas(A, k, r):
-    linhaAux = A[k]
+    linhaAux = A[k].copy()
     A[k] = A[r]
     A[r] = linhaAux    
 
@@ -30,10 +30,9 @@ def eliminacao_gauss_pivoteamento(A, b):
         # Etapa de eliminacao
         for i in range(k+1,size):
                 m = A[i,k]/A[k,k]
-                for j in range(k,size-1):
+                for j in range(k,size):
                     A[i,j] -= m * A[k,j]
                 b[i] -= m * b[k]
-    print(A)
     x = retrosubstituicao(A, b)
     return x
 
@@ -370,6 +369,10 @@ def inversa(A):
 
 """Para o problema 4"""
 def construcaoMatrizVetor(n):
+    """
+    Função que uma matriz de hilbert e um vetor associado
+    n: ordem da matriz de hilbert 
+    """
     H = np.zeros((n, n), dtype=float)
     b = np.zeros(n, dtype=float)
     for i in range(n):
@@ -379,6 +382,12 @@ def construcaoMatrizVetor(n):
     return H, b
 
 def calcularResiduo(H, b, x):
+    """
+    Função que retorna o condiresíduo da solução de um dado sistema
+    A: matriz desejada para calcular o condicionamresíduo
+    b: valores alvo da solução
+    x: vetor de solução do sistema linear 
+    """
     return (abs((H@x).transpose() - b)).max()
 
 """Para o problema 3"""
