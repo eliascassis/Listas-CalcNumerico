@@ -109,3 +109,13 @@ def p(z, a, n):
     
 # Retornando o polinomio
     return P
+
+# Pontos para chebyshev
+def pontosChebyshev(n):
+    x = np.zeros(n, dtype=float)
+    for k in range(n):
+        x[k] = math.cos(math.pi*(2*(k+1)-1)/(2*n))
+    return x
+
+def normaMaximo(p, f):
+    return max(f-p)
