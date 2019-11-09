@@ -36,8 +36,8 @@ def solveLU(A,b):
       - retorna a solucao em x
     """
     n = len(A)
-    x = np.zeros(n)
-    y = np.zeros(n)
+    x = np.zeros(n, dtype=float)
+    y = np.zeros(n, dtype=float)
     
     # substituicao
     y[0] = b[0]
@@ -63,7 +63,7 @@ def pontos(n):
     de acordo com a formula:
     Xk = -1 + ((2/n)*k)
     """
-    x = np.zeros(n)
+    x = np.zeros(n, dtype=float)
     for k in range(0,n):
         x[k] = -1 + ((2/n)*k)
 
@@ -80,9 +80,9 @@ def encontrarPolinomio(n,x):
     # Definindo Matriz com pontos
     X = np.zeros((n,n), dtype=float)
     # Vetor de coeficientes
-    a = np.zeros(n)
+    a = np.zeros(n, dtype=float)
     # Vetor de y
-    y = np.zeros(n)
+    y = np.zeros(n, dtype=float)
 
     # Preenchendo o vetor y
     for i in range(0,n):
@@ -98,13 +98,14 @@ def encontrarPolinomio(n,x):
     decompLU(LU)
     a = solveLU(LU,y)
 
-    # Definindo o polinomio
-    def p(z):
-        P = 0
-
-        for i in range(0,n):
-            P += a[i]*(z**i)
-        
-    # Retornando o polinomio
-    return p
+    return a
     
+# Definindo o polinomio
+def p(z, a, n):
+    P = 0
+
+    for i in range(n):
+        P += a[i]*(z**i)
+    
+# Retornando o polinomio
+    return P
