@@ -16,8 +16,12 @@ for i in range(2,11):
         pp[j] = fI.p(xx[j], a, i)
 
     #pp = p(xx) # Imagem no gráfico
-    plt.plot(x,f)
-    plt.plot(xx,pp)
+    plt.xlabel("x")
+    plt.ylabel("f(x)")
+    plt.title("Utilizando o conjunto de pontos da letra A")
+    plt.plot(x,f, 'ro',label="Pontos")
+    plt.plot(xx,pp,label="Função interpoladora")
+    plt.legend()
     plt.show()
 
 # Letra B
@@ -34,8 +38,12 @@ for i in range(2,11):
         pp[j] = fI.p(xx[j], a, i)
 
     #pp = p(xx) # Imagem no gráfico
-    plt.plot(x,f)
-    plt.plot(xx,pp)
+    plt.xlabel("x")
+    plt.ylabel("f(x)")
+    plt.title("Utilizando o conjunto de pontos da letra A")
+    plt.plot(x,f, 'ro',label="Pontos")
+    plt.plot(xx,pp,label="Função interpoladora")
+    plt.legend()
     plt.show()
 
 # Letra C
@@ -57,7 +65,10 @@ for i in [2, 5, 10, 15]:
     print(erro)
 
     #pp = p(xx) # Imagem no gráfico
-    plt.plot(x,f)
-    plt.plot(xx,pp)
+    plt.xlabel("x")
+    plt.ylabel("f(x)")
+    plt.title("Utilizando o conjunto de pontos da letra A")
+    plt.plot(x,f, 'ro',label="Pontos")
+    plt.plot(xx,pp,label="Função interpoladora")
+    plt.legend()
     plt.show()
-
