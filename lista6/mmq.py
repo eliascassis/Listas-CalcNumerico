@@ -111,3 +111,39 @@ def m(A):
 # Calcula F = A^Ty
 def f(A, y):
     return np.linalg.transpose(A)@y
+
+
+# Soma dos quadrados dos desvios entre medidas (y) e predições (g(x))
+def quadradosMedPred(g, x, y, n):
+
+    soma = 0
+
+    for i in range(0,n):
+        soma += (g(x[i]) - y[i])**2
+
+    return soma
+
+def media(y, n):
+
+    soma = 0
+
+    for i in range(0, n):
+        soma += y[i]
+
+    return soma/n
+
+# Soma dos quadrados das diferenças em relação à média
+def quadradosDifMedia(y, n):
+
+    soma = 0
+
+    ym = media(y, n)
+
+    for i in range(0,n):
+        soma += (y[i] - ym)**2
+
+    return soma
+
+def coefDeterminacao(g, x, y, n):
+
+    return 1 - (quadradosMedPred(g, x, y, n) / quadradosDifMedia(y, n))
