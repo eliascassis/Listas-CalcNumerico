@@ -94,7 +94,7 @@ def solveCholesky(G,b):
 
 # Monta a matriz proposta
 def sistema_equacoes_normais(x):
-    m = x.size()
+    m = len(x)
     A = np.empty((m, 3), dtype=float)
     for i in range(0, m):
         for j in range(0, 3):
@@ -108,8 +108,8 @@ def sistema_equacoes_normais(x):
 
 # Calcula M = A^T*A
 def m(A):
-    return np.linalg.transpose(A)@A
+    return np.transpose(A)@A
 
 # Calcula F = A^Ty
 def f(A, y):
-    return np.linalg.transpose(A)@y
+    return np.transpose(A)@y
