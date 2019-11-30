@@ -116,12 +116,12 @@ def f(A, y):
 
 
 # Soma dos quadrados dos desvios entre medidas (y) e predições (g(x))
-def quadradosMedPred(g, x, y, n):
+def quadradosMedPred(g, y, n):
 
     soma = 0
 
     for i in range(0,n):
-        soma += (g(x[i]) - y[i])**2
+        soma += (g[i] - y[i])**2
 
     return soma
 
@@ -146,6 +146,6 @@ def quadradosDifMedia(y, n):
 
     return soma
 
-def coefDeterminacao(g, x, y, n):
+def coefDeterminacao(g, y, n):
 
-    return 1 - (quadradosMedPred(g, x, y, n) / quadradosDifMedia(y, n))
+    return 1 - (quadradosMedPred(g, y, n) / quadradosDifMedia(y, n))
