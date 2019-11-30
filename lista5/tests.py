@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import funcoesInterpolacao as fI
-
+"""
 # Letra A
 for i in range(2,11):
     
@@ -19,11 +19,13 @@ for i in range(2,11):
     xf = fI.f(xx)
     plt.xlabel("x")
     plt.ylabel("f(x)")
-    plt.title("Utilizando o conjunto de pontos da letra A")
+    plt.title("Comparação da função original com o polinômio interpolador de grau {}".format(i))
+    plt.plot(x, f, 'go',label="Pontos da interpolação")
     plt.plot(xx,xf, 'r',label="Função original")
-    plt.plot(xx,pp,label="Função interpoladora")
+    plt.plot(xx,pp,label="Polinômio interpolador")
     plt.legend()
     plt.show()
+
 
 # Letra B
 for i in range(2,11):
@@ -42,16 +44,17 @@ for i in range(2,11):
     xf = fI.f(xx)
     plt.xlabel("x")
     plt.ylabel("f(x)")
-    plt.title("Utilizando o conjunto de pontos da letra B")
+    plt.title("Comparação da função original com o polinômio interpolador de grau {}".format(i))
+    plt.plot(x, f, 'go',label="Pontos da interpolação")
     plt.plot(xx,xf, 'r',label="Função original")
-    plt.plot(xx,pp,label="Função interpoladora")
+    plt.plot(xx,pp,label="Polinômio interpolador")
     plt.legend()
     plt.show()
-
+"""
 # Letra C
 for i in [2, 5, 10, 15]:
     
-    x = fI.pontos(i) # Pontos
+    x = fI.pontosChebyshev(i) # Pontos
     f = fI.f(x)
     xx = np.linspace(-1,1,100) # Dominio
 
@@ -67,11 +70,13 @@ for i in [2, 5, 10, 15]:
     print(erro)
 
     #pp = p(xx) # Imagem no gráfico
-    xf = fI.f(xx)
-    plt.xlabel("x")
-    plt.ylabel("f(x)")
-    plt.title("Utilizando o conjunto de pontos da letra A")
-    plt.plot(xx,xf, 'r',label="Função original")
-    plt.plot(xx,pp,label="Função interpoladora")
-    plt.legend()
-    plt.show()
+    if i == 15:
+        xf = fI.f(xx)
+        plt.xlabel("x")
+        plt.ylabel("f(x)")
+        plt.title("Comparação da função original com o polinômio interpolador de grau {}".format(i))
+        plt.plot(x, f, 'go',label="Pontos da interpolação")
+        plt.plot(xx,xf, 'r',label="Função original")
+        plt.plot(xx,pp,label="Função interpoladora")
+        plt.legend()
+        plt.show()

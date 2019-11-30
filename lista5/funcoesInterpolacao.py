@@ -118,4 +118,4 @@ def pontosChebyshev(n):
     return x
 
 def normaMaximo(p, f):
-    return max(f-p)
+    return max(abs(f-p))
