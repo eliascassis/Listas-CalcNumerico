@@ -18,11 +18,13 @@ for n in listN:
     # Resolvendo pelo método de Cholesky
     A = mmq.cholesky(M) 
     c = mmq.solveCholesky(A, F)
+    print(c)
     # Definindo a função aproximada
     z = np.arange(0, 5, 0.0001)
     result = np.zeros(len(z), dtype=float)
     for i in range(len(z)):
-        result[i] = c[0] + c[1]*z[i] + c[2]*(z[i] ** 2)
+        for j in range(n):
+            result[i] += c[j]*(z[i] ** j)
 
     print("\nN = %d" % n)
     print("E_q = %f" % mmq.quadradosMedPred(result, y, n))

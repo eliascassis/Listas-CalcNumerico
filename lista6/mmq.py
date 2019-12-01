@@ -93,16 +93,12 @@ def solveCholesky(G,b):
 # -----------------------------------------------------------------------------
 
 # Monta a matriz proposta
-def sistema_equacoes_normais(x, n):
-    A = np.empty((n, 3), dtype=float)
-    for i in range(0, n):
-        for j in range(0, 3):
-            if(j == 0):
-                A[i][j] = 1
-            if(j == 1):
-                A[i][j] = x[i] 
-            if(j == 2):
-                A[i][j] = x[i] ** 2
+def sistema_equacoes_normais(x,n):
+    m = len(x)
+    A = np.empty((m, n), dtype=float)
+    for i in range(0, m):
+        for j in range(0, n):
+            A[i][j] = x[i] ** j
     return A
 
 # Calcula M = A^T*A
