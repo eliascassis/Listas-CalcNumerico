@@ -23,7 +23,7 @@ for n in listN:
     z = np.arange(0, 5, 0.0001)
     result = np.zeros(len(z), dtype=float)
     for i in range(len(z)):
-        for j in range(n):
+        for j in range(n+1):
             result[i] += c[j]*(z[i] ** j)
 
     print("\nN = %d" % n)
