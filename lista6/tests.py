@@ -19,18 +19,27 @@ for n in listN:
     A = mmq.cholesky(M) 
     c = mmq.solveCholesky(A, F)
     print(c)
+
+    # Impressão das métricas
+    # Definindo a função aproximada
+    z = x
+    result = np.zeros(len(z), dtype=float)
+    for i in range(len(z)):
+        for j in range(n+1):
+            result[i] += c[j]*(z[i] ** j)
+    t = len(x)
+    print("\nN = %d" % n)
+    print("E_q = %f" % mmq.quadradosMedPred(result, y, t))
+    print("Media = %f" % mmq.media(y, t))
+    print("E_qm = %f" % mmq.quadradosDifMedia(y, t))
+    print("R^2 = %f" % mmq.coefDeterminacao(result, y, t))
+
     # Definindo a função aproximada
     z = np.arange(0, 5, 0.0001)
     result = np.zeros(len(z), dtype=float)
     for i in range(len(z)):
         for j in range(n+1):
             result[i] += c[j]*(z[i] ** j)
-
-    print("\nN = %d" % n)
-    print("E_q = %f" % mmq.quadradosMedPred(result, y, n))
-    print("Media = %f" % mmq.media(y, n))
-    print("E_qm = %f" % mmq.quadradosDifMedia(y, n))
-    print("R^2 = %f" % mmq.coefDeterminacao(result, y, n))
 
     # Plotando o gráfico
     plt.title("Aproximação pelo MMQ utilizando polinômio de grau {}".format(n))
