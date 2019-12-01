@@ -18,7 +18,6 @@ for n in listN:
     # Resolvendo pelo método de Cholesky
     A = mmq.cholesky(M) 
     c = mmq.solveCholesky(A, F)
-    print(c)
 
     # Impressão das métricas
     # Definindo a função aproximada
