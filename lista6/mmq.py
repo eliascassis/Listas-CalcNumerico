@@ -93,10 +93,9 @@ def solveCholesky(G,b):
 # -----------------------------------------------------------------------------
 
 # Monta a matriz proposta
-def sistema_equacoes_normais(x):
-    m = len(x)
-    A = np.empty((m, 3), dtype=float)
-    for i in range(0, m):
+def sistema_equacoes_normais(x, n):
+    A = np.empty((n, 3), dtype=float)
+    for i in range(0, n):
         for j in range(0, 3):
             if(j == 0):
                 A[i][j] = 1
